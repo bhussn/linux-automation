@@ -32,13 +32,16 @@ This project demonstrates how to automate the provisioning and configuration of 
    cd terraform-ansible-docker-webserver 
 
 2. **Clone the repository**
+
    terraform init
    terraform apply
 
 3. **Run the Ansible playbook to configure the web server**
+
    ansible-playbook -i inventory.ini playbook.yml
 
 4. **Access the web server**
+
    http://localhost:8080
 
 
