@@ -1,0 +1,88 @@
+- name: Configure web server container
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start Apache service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Deploy index.html
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>Welcome to My Web Server</title>
+            <style>
+              *, *::before, *::after {
+                box-sizing: border-box;
+              }
+              html, body {
+                height: 100%;
+                margin: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+                color: white;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+              }
+              body {
+                min-height: 100vh;
+              }
+              .content {
+                flex: 1;
+                padding: 50px 20px 20px 20px;
+                max-width: 600px;
+                margin: 0 auto;
+              }
+              h1 {
+                font-size: 3em;
+                margin-bottom: 0.2em;
+              }
+              p {
+                font-size: 1.2em;
+                margin-bottom: 1em;
+              }
+              a {
+                color: #FFD700;
+                text-decoration: none;
+                font-weight: bold;
+              }
+              a:hover {
+                text-decoration: underline;
+              }
+              footer {
+                font-size: 0.9em;
+                opacity: 0.7;
+                padding: 10px 0;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="content">
+              <h1>Welcome to My Awesome Web Server!</h1>
+              <p>This server is powered by Docker, Terraform, and Ansible automation.</p>
+              <p>Explore the power of Infrastructure as Code and Configuration Management!</p>
+              <p>Visit my <a href="https://github.com/bhussn" target="_blank">GitHub</a> for more projects.</p>
+            </div>
+            <footer>© lol</footer>
+          </body>
+          </html>
+        owner: www-data
+        group: www-data
+        mode: '0644'
