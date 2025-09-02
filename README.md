@@ -33,14 +33,15 @@ This project demonstrates how to automate the provisioning and configuration of 
 
 2. **Setup**
 
+   ```bash
    terraform init
    terraform apply
 
-3. **Run the Ansible playbook to configure the web server**
-
+4. **Run the Ansible playbook to configure the web server**
+   ```bash
    ansible-playbook -i inventory.ini playbook.yml
 
-4. **Access the web server**
+5. **Access the web server**
 
    http://localhost:8080
 
