@@ -31,7 +31,7 @@ This project demonstrates how to automate the provisioning and configuration of 
    git clone https://github.com/yourusername/terraform-ansible-docker-webserver.git
    cd terraform-ansible-docker-webserver 
 
-2. **Clone the repository**
+2. **Setup**
 
    terraform init
    terraform apply
